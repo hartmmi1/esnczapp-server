@@ -1,0 +1,18 @@
+{form cityForm}
+	<input n:name="id" value="{$city ? $city->getId()}">
+	<div class="form-group">
+		<label class="form-control-label">Name</label>
+		<input class="form-control" n:name="name" value="{$city ? $city->getName()}">
+		<button class="btn btn-secondary"><strike>Get coordinates</strike></button>
+	</div>
+	<div class="form-group">
+		<label class="form-control-label">Longitude</label>
+		<input class="form-control" n:name="lon" value="{$city ? $city->getLon()}">
+		<label class="form-control-label">Latitude</label>
+		<input class="form-control" n:name="lat" value="{$city ? $city->getLat()}">
+
+	</div>
+	<div class="form-group">
+		<input n:name="save" class="btn btn-success">
+	</div>
+{/form}

@@ -1,0 +1,56 @@
+{block content}
+<!-- content -->
+<section class="cities-table">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>List of subcategories</h3>
+                        <br>
+                        <a class="btn {$selected_cat ? 'btn-secondary' : 'btn-primary'}" n:href="Subcategories:default">All</a>
+                        {foreach $categories as $cat}
+                            {var $catName = $cat->getName()}
+                        <a class="btn {$selected_cat == $cat->getId() ? 'btn-primary' : 'btn-secondary'}" n:href="Subcategories:default $cat->getId()">{$catName}</a>
+                        {/foreach}
+                        <a class="btn btn-secondary float-right" n:href="Subcategories:add"><li class="fa fa-plus-circle"></li>&nbsp;Add</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Colour</th>
+                                <th>Icon</th>
+                                <th>Icon url</th>
+                                <th>Order</th>
+                                <th>Points</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach $subcategories as $subcat}
+                                <tr>
+                                    <td>{$subcat->getId()}</td>
+                                    <td>{$subcat->getName()}</td>
+                                    <td>{$subcat->getColor()}</td>
+                                    <td><img src="{$subcat->getIconUrl()}" style="height: 50px; width: 50px;"></td>
+                                    <td>{$subcat->getIconUrl()}</td>
+                                    <td>{$subcat->getOrder()}</td>
+                                    <td>{$subcat->getOrder()}&nbsp;<i class="fa fa-list"></i></td>
+                                    <td><span style="font-size: larger;">
+                                            <a n:href="Subcategories:edit $subcat->getId()" title="Edit subcategory"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <a n:href="Subcategories:delete $subcat->getId()" class="text-red" title="(!) DELETE subcategory"><i class="fa fa-trash"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

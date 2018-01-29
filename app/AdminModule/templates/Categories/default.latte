@@ -1,0 +1,51 @@
+{block content}
+<!-- content -->
+<section class="cities-table">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="float-left">List of main categories</h3>
+						<a n:href="Categories:add" class="btn btn-secondary float-right"><i class="fa fa-plus-circle"></i>&nbsp;Add</a>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped table-hover">
+							<thead>
+							<tr>
+								<th>Id</th>
+								<th>Name</th>
+								<th>Colour</th>
+								<th>Icon</th>
+								<th>Icon url</th>
+								<th>Order</th>
+								<th>Subcategories</th>
+								<th>Action</th>
+							</tr>
+							</thead>
+							<tbody>
+							{foreach $categories as $cat}
+								<tr>
+									<td>{$cat->getId()}</td>
+									<td>{$cat->getName()}</td>
+									<td>{$cat->getColor()}</td>
+									<td><img src="{$cat->getIconUrl()}" style="width: 50px; height: 50px;"></td>
+									<td>{$cat->getIconUrl()}</td>
+									<td>{$cat->getOrder()}</td>
+									<td>{$cat->getOrder()}&nbsp;<i class="fa fa-list"></i></td>
+									<td>
+										<span style="font-size: larger;">
+											<a n:href="Categories:edit $cat->getId()" class="" title="Edit category"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+											<a n:href="Categories:delete $cat->getId()" class="text-red" title="(!) Delete category"><i class="fa fa-trash"></i></a>
+										</span>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

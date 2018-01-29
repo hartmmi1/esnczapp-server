@@ -1,0 +1,48 @@
+{block content}
+<!-- content -->
+<section class="cities-table">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="float-left">Universities</h3>
+						<a n:href="Sections:add" class="btn btn-secondary float-right"><i class="fa fa-plus-circle"></i> Add university</a>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Id</th>
+									<th>Name</th>
+									<th>City</th>
+									<th>Description</th>
+									<th>Section</th>
+									<th>Points</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								{foreach $unis as $uni}
+									<tr>
+										<td>{$uni->getId()}</td>
+										<td>{$uni->getName()}</td>
+										<td>{$uni->getParentCity()->getName()}</td>
+										<td><span style="color: darkgray">not yet implemented</span> {$uni->getDescription()}</td>
+										<td><span style="color: darkgray">not yet implemented</span></td>
+										<td> ... </td>
+										<td><span style="font-size: larger;">
+												<a n:href="Sections:edit $uni->getId()" title="Edit university/section"><i class="fa fa-pencil"></i></a>&nbsp;
+												<a n:href="Sections:delete $uni->getId()" title="(!) Delete item"><i class="fa fa-trash"></i></a>
+											</span>
+										</td>
+									</tr>
+								{/foreach}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

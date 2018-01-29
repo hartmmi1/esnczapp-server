@@ -1,0 +1,87 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		Admin: App\AdminModule\Presenters\*Presenter
+		Front: App\FrontModule\Presenters\*Presenter
+		Api: App\ApiModule\Presenters\*Presenter
+		*: App\*Module\Presenters\*Presenter
+
+session:
+	expiration: 14 days
+
+#security:
+#	users:
+#		superadmin: thisisesn
+#		admin_vut: vut
+#		admin_mendelu: mendelu
+#		admin_muni: muni
+#		admin_upol: upol
+#		admin_utb: utb
+#		admin_vsb: vsb
+#		admin_ou: ostravska
+#		admin_uhk: uhk
+#		admin_upce: upce
+#		admin_tul: tul
+#		admin_ujep: ujep
+#		admin_vste: vste
+#		admin_zcu: zcu
+#		admin_ctu: ctu
+#		admin_culs: culs
+#		admin_vse: vse
+#		admin_vscht: vscht
+#		admin_cuni: cuni
+#
+#	roles:
+#		sectionadmin:
+#		superadmin:
+
+
+services:
+	router: App\RouterFactory::createRouter
+	authenticator: App\Logic\UserLogic
+
+	# logic
+	# - App\Logic\UserLogic # len authentifikator
+
+	# facades
+	- App\Model\CityFacade
+	- App\Model\UniversityFacade
+	- App\Model\CategoryFacade
+	- App\Model\PointFacade
+	- App\Model\ImageFacade
+	- App\Model\ContentFacade
+	- App\Model\SubcFacade
+	- App\Model\UserFacade
+
+	# component factories
+	- App\AdminModule\Components\ICityFormFactory
+	- App\AdminModule\Components\IUniversityFormFactory
+	- App\AdminModule\Components\IDeleteItemControlFactory
+	- App\AdminModule\Components\IPointFormFactory
+
+extensions:
+	images: WebChemistry\Images\DI\ImagesExtension
+	console: Kdyby\Console\DI\ConsoleExtension
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+
+doctrine:
+	user: esncz_app
+	password: ODm4xZFmJH
+	dbname: esncz_app
+	host: localhost
+	metadata:
+		App: %appDir%
+
+images:
+	local:
+		enable: yes
+		wwwDir: %wwwDir%
+		assetsDir: 'data'
+		aliases:
+			preview: "resize:200,200"
+			detail: "resize:800,400"

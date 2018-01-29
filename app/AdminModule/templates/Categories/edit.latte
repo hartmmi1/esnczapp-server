@@ -1,0 +1,39 @@
+{block content}
+<!-- content -->
+<section class="">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h3>{$title}</h3>
+					</div>
+					<div class="card-body">
+						{form categoryForm}
+							<input n:name="id" value="{$cat ? $cat->getId()}">
+							<div class="form-group">
+								<label class="form-control-label">Name of category</label>
+								<input class="form-control" n:name="name" value="{$cat ? $cat->getName()}">
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Color</label>
+								<input class="form-control" n:name="color" value="{$cat ? $cat->getColor()}">
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Icon URL</label>
+								<input class="form-control" n:name="icon_url" value="{$cat ? $cat->getIconUrl()}">
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Order</label>
+								<input class="form-control" n:name="order" value="{$cat ? $cat->getOrder()}">
+							</div>
+							<div class="form-group">
+								<input class="btn btn-success" n:name="save" class="btn btn-success">
+							</div>
+						{/form}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

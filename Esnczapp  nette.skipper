@@ -1,0 +1,174 @@
+<?xml version="1.0"?>
+<skipper version="3.2.10.1370" mvc="Without MVC" orm="Doctrine2" name="esnczapp - nette" uuid="c250dc3e-1b1c-4e14-8913-c0cd7a589d45">
+  <module name="\app/model/entities" local-name="app/model/entities" namespace="\App\Model" local-namespace="\App\Model" export-format="Doctrine2Php" export-path="app/model/entities" uuid="6973f970-79ce-4df8-bfe9-670acec8640e">
+    <entity name="\App\Model\CategoryEntity" local-name="CategoryEntity" namespace="\App\Model" uuid="7643c7ed-4cf3-4312-ba14-f0f7ca4bd47e">
+      <field name="id" type="integer" required="true" primary="true" uuid="7c709f55-afbd-48b4-b3ec-ec977519b52a">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="4ca023ee-303c-47ba-94e1-d85d01de5608"/>
+      <field name="color" type="string" uuid="26360dea-c39d-46f7-8301-c5de50852a9d"/>
+      <field name="icon_url" type="string" size="2000" uuid="8cd134a7-45fd-40a5-9836-a9f775e0fb13"/>
+      <field name="order" type="integer" uuid="2774be73-35ad-4c75-986a-778d1c8620a7"/>
+      <orm-attributes>
+        <attribute name="table">categories</attribute>
+        <attribute name="export-file-name">CategoryEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\CityEntity" local-name="CityEntity" namespace="\App\Model" uuid="6f5d2de8-1f03-4503-a88b-b99586c84de2">
+      <field name="id" type="integer" required="true" primary="true" uuid="f1bed3cc-d406-474c-a657-7fd6ac90a4b7">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="05642f39-5ce0-4baa-952f-bde9f65bbefb"/>
+      <field name="description" type="string" size="5000" uuid="a34f4d9d-756e-47c6-99a2-27589d7e2189"/>
+      <field name="lat" type="float" uuid="73eabf49-eca9-4162-8ec7-22405a9692ea"/>
+      <field name="lon" type="float" uuid="260f569a-d609-43eb-9779-680c5d964f79"/>
+      <orm-attributes>
+        <attribute name="table">cities</attribute>
+        <attribute name="export-file-name">CityEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\ContentBlockEntity" local-name="ContentBlockEntity" namespace="\App\Model" uuid="b1c987f4-528d-43fa-b3c1-2322247114d0">
+      <field name="id" type="integer" required="true" primary="true" uuid="ad0a9e9b-9df9-402f-9e1e-9ea451aecbd2">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="poi_id" type="integer" uuid="8e128539-8e09-47fb-94b5-b2303d731014"/>
+      <field name="content_title" type="string" uuid="17b09352-8248-43bc-a6ae-6e5549d7137f"/>
+      <field name="content_block" type="string" uuid="eca9cd14-7ad4-4cfe-baa8-8fdeefff4435"/>
+      <field name="order" type="integer" uuid="f166b050-4253-47d3-ae72-7becd4a8eefe"/>
+      <orm-attributes>
+        <attribute name="table">content_blocks</attribute>
+        <attribute name="export-file-name">ContentBlockEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\ImageEntity" local-name="ImageEntity" namespace="\App\Model" uuid="4051753b-b8d9-4bf1-aa99-a93677c556bd">
+      <field name="id" type="integer" required="true" primary="true" uuid="18cfc200-1907-4479-aa9a-930122d5c051">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="poi_id" type="integer" uuid="616069ce-345c-446f-9931-2af1b9d8b06d"/>
+      <field name="image_url" type="string" uuid="651e50d2-5f70-4769-ab2d-83baac66cf79"/>
+      <field name="order" type="integer" uuid="f36e6a36-696b-46ff-9f19-25f497b920f9"/>
+      <orm-attributes>
+        <attribute name="table">images</attribute>
+        <attribute name="export-file-name">ImageEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\PoiEntity" local-name="PoiEntity" namespace="\App\Model" uuid="0e25c5aa-5a36-4206-a379-bd76c5da4fa3">
+      <field name="id" type="integer" required="true" primary="true" uuid="8bddb09c-bb2d-4d84-bfbc-3c4a3d9a557c">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="full_address" type="string" uuid="36e60017-b48e-4a41-8792-768907b0ec6c"/>
+      <field name="name" type="string" uuid="1cd80e90-3572-42ca-95bc-d6ad03f2b72c"/>
+      <field name="lat" type="float" uuid="89ee4727-b0bf-4b00-9b61-4205e130ed0f"/>
+      <field name="lon" type="float" uuid="949c1937-452a-47aa-9349-84eddb2969b7"/>
+      <field name="preview_image" type="string" size="2000" uuid="5bb1f95f-34fa-4642-8132-87fbcf35ecc9"/>
+      <field name="website_link" type="string" size="2000" uuid="575a819e-172b-40cc-8237-a53f40f403eb"/>
+      <field name="subcategory_id" type="integer" uuid="97ed3472-3608-4a00-99c2-02e7e08f8ebf"/>
+      <field name="city_id" type="integer" uuid="fad3d719-087b-4448-a3c2-f9206e586cb9"/>
+      <field name="university_id" type="integer" uuid="297c1b78-525c-43cb-8dd6-f6dc8bae18c4"/>
+      <field name="order" type="integer" uuid="22ec0d62-aae5-48f9-841c-6313e68b223e"/>
+      <orm-attributes>
+        <attribute name="table">pois</attribute>
+        <attribute name="export-file-name">PoiEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\SectionEntity" local-name="SectionEntity" namespace="\App\Model" uuid="66782125-79b0-438d-a829-4d246858db7d">
+      <field name="id" type="integer" required="true" primary="true" uuid="db9bca8e-5a4d-4d10-98bf-1dbe987538e8">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="de61b7c4-8adc-4063-baf6-665c7d4595c2"/>
+      <field name="description" type="string" size="5000" uuid="c123ac7a-605a-4934-a2a0-b6798d2b4142"/>
+      <field name="university_id" type="integer" uuid="7a955cd8-795f-41b6-99a7-d9f4c38d3d00"/>
+      <field name="city_id" type="integer" uuid="2cad1a94-4663-4898-9b3c-41c774fda4ec"/>
+      <orm-attributes>
+        <attribute name="table">sections</attribute>
+        <attribute name="export-file-name">SectionEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\App\Model\SectionEntity" to="\App\Model\UniversityEntity" owner-alias="" inverse-alias="university_id" many-owner="true" many-inverse="false" uuid="09234750-b617-4e16-8469-2949a6a8d0d5">
+      <association-field from="university_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <association from="\App\Model\SectionEntity" to="\App\Model\CityEntity" owner-alias="" inverse-alias="city_id" many-owner="true" many-inverse="false" uuid="8a4bd7a0-eb71-4f69-9d0b-ec72e3705304">
+      <association-field from="city_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="\App\Model\SubcategoryEntity" local-name="SubcategoryEntity" namespace="\App\Model" uuid="293a9662-f735-4e2d-b54f-268d8450cf25">
+      <field name="id" type="integer" required="true" primary="true" uuid="641956fc-a496-454c-aaf4-73e3f20d0140">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="8d00cb31-d792-498b-b6d2-e2046494e036"/>
+      <field name="color" type="string" uuid="ec244c09-4dfa-4635-89c2-84459d3ec8ea"/>
+      <field name="icon_url" type="string" size="2000" uuid="67ee3fa9-5bdd-48d9-b760-c751bbe18187"/>
+      <field name="order" type="integer" uuid="97fe78f6-458e-411c-a7df-d6c9096ec8b4"/>
+      <field name="parent_category" type="integer" uuid="610b7224-4940-45f2-ac86-0d1eec71bda6"/>
+      <orm-attributes>
+        <attribute name="table">subcategories</attribute>
+        <attribute name="export-file-name">SubcategoryEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\App\Model\UniversityEntity" local-name="UniversityEntity" namespace="\App\Model" uuid="a105ecf3-c6e1-48e9-a91c-ff991ad796a6">
+      <field name="id" type="integer" required="true" primary="true" uuid="1d153717-d793-4521-8e78-217df68ddd4b">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="c3796257-b171-4bba-a283-42c16a24df7c"/>
+      <field name="description" type="string" size="5000" uuid="480d329a-9436-4072-a67b-c065f6b57b28"/>
+      <field name="parent_city" type="integer" uuid="e3a6a156-9bd4-431b-8ba0-0f0cf48be054"/>
+      <orm-attributes>
+        <attribute name="table">universities</attribute>
+        <attribute name="export-file-name">UniversityEntity.php</attribute>
+      </orm-attributes>
+    </entity>
+  </module>
+  <visual-data>
+    <association uuid="09234750-b617-4e16-8469-2949a6a8d0d5" color="#A8A8A8"/>
+    <association uuid="8a4bd7a0-eb71-4f69-9d0b-ec72e3705304" color="#0A783D"/>
+    <entity uuid="0e25c5aa-5a36-4206-a379-bd76c5da4fa3" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="205" position-y="251" size-x="0" size-x2="145" size-y="0" size-y2="171"/>
+    <entity uuid="293a9662-f735-4e2d-b54f-268d8450cf25" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="27" position-y="462" size-x="0" size-x2="130" size-y="0" size-y2="101"/>
+    <entity uuid="4051753b-b8d9-4bf1-aa99-a93677c556bd" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="44" position-y="251" size-x="0" size-x2="97" size-y="0" size-y2="73"/>
+    <entity uuid="66782125-79b0-438d-a829-4d246858db7d" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="398" position-y="251" size-x="0" size-x2="128" size-y="0" size-y2="87"/>
+    <entity uuid="6f5d2de8-1f03-4503-a88b-b99586c84de2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="213" position-y="40" size-x="0" size-x2="128" size-y="0" size-y2="87"/>
+    <entity uuid="7643c7ed-4cf3-4312-ba14-f0f7ca4bd47e" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="35" position-y="40" size-x="0" size-x2="115" size-y="0" size-y2="87"/>
+    <entity uuid="a105ecf3-c6e1-48e9-a91c-ff991ad796a6" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="213" position-y="462" size-x="0" size-x2="128" size-y="0" size-y2="73"/>
+    <entity uuid="b1c987f4-528d-43fa-b3c1-2322247114d0" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="405" position-y="40" size-x="0" size-x2="115" size-y="0" size-y2="87"/>
+    <module uuid="6973f970-79ce-4df8-bfe9-670acec8640e" bg-color="#FEEFE3" position-x="50" position-y="50" size-x="0" size-x2="555" size-y="0" size-y2="653"/>
+    <project uuid="c250dc3e-1b1c-4e14-8913-c0cd7a589d45" size-x="0" size-x2="655" size-y="0" size-y2="753"/>
+  </visual-data>
+</skipper>

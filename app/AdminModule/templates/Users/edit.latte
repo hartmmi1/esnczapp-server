@@ -1,0 +1,68 @@
+{block content}
+<section>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h3>{$title}</h3>
+					</div>
+					<div class="card-body">
+						{*{form subcategoryForm}*}
+							{*<input n:name="id" value="{$subcat ? $subcat->getId()}">*}
+							{*<div class="form-group">*}
+								{*<label class="form-control-label">Name of category</label>*}
+								{*<input class="form-control" n:name="name" value="{$subcat ? $subcat->getName()}">*}
+							{*</div>*}
+							{*<div class="form-group">*}
+								{*<label class="form-control-label">Color</label>*}
+								{*<input class="form-control" n:name="color" value="{$subcat ? $subcat->getColor()}">*}
+							{*</div>*}
+							{*<div class="form-group">*}
+								{*<label class="form-control-label">Icon URL</label>*}
+								{*<input class="form-control" n:name="icon_url" value="{$subcat ? $subcat->getIconUrl()}">*}
+							{*</div>*}
+							{*<div class="form-group">*}
+								{*<label class="form-control-label">Order</label>*}
+								{*<input class="form-control" n:name="order" value="{$subcat ? $subcat->getOrder()}">*}
+							{*</div>*}
+							{*<div class="form-group">*}
+								{*<label class="form-control-label">Parent category</label>*}
+								{*{input parent_category}*}
+							{*</div>*}
+							{*<div class="form-group">*}
+								{*<input class="btn btn-success" n:name="save" class="btn btn-success">*}
+							{*</div>*}
+						{*{/form}*}
+						{form userForm}
+							{input id}
+							<div class="form-group">
+								<label class="form-control-label">Name</label>
+								{input name}
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Login</label>
+								{input login}
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Password</label>
+								{input psswd}
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">Role</label>
+								{input role}
+							</div>
+							<div class="form-group">
+								<label class="form-control-label">University</label>
+								{input university}
+							</div>
+							<div class="form-group">
+								{input save}
+							</div>
+						{/form}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

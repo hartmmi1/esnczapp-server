@@ -1,0 +1,190 @@
+{form pointForm}
+	{input id}
+	<!-- Name --------------------------------------------------------------- -->
+	<h4 class="border-bottom-1-gray">Basic</h4>
+	<div class="form-group">
+		<label class="form-control-label">Name</label>
+		{input name}
+	</div>
+	<!-- Address and GPS --------------------------------------------------------------- -->
+	<div class="form-group row">
+		<div class="col-8">
+			<label class="form-control-label">Full address</label>
+			{input address}
+		</div>
+		<div class="col-4">
+			<label class="form-control-label">Get GPS automatically</label>
+			<btn class="btn btn-outline-primary" style="cursor: hand" id="geoBtn"><i class="fa fa-map-marker"></i>&nbsp;Get coordinates</btn>
+			<span class="small alert-warning p-1">If not working, turn off your ad blocker.</span>
+		</div>
+	</div>
+
+	<div class="row">
+
+	</div>
+
+
+	<div class="row">
+
+		<div class="col-6"><label class="form-control-label">GPS Latitude (N) - numbers only</label>{input lat}</div>
+		<div class="col-6"><label class="form-control-label">GPS Longitude (E) - numbers only</label>{input lon}</div>
+
+	</div>
+	<div class="row mt-1">
+		<span class="alert-info small mb-1 p-1 w-100">Lat and Long input fields has bees swapped to follow google standard.</span><br>
+		<span class="alert-info small mb-1 p-1 w-100">Be careful when adding coordinates. To get precise <strong>Latitude</strong> and <strong>Longitude</strong>, you can use <a href="http://www.latlong.net/">www.latlong.net/</a>.</span>
+	</div>
+	<!-- Assignment to Uni, City and Subc --------------------------------------------------------------- -->
+	<h4 class="border-bottom-1-gray mt-4">Sorting</h4>
+	<div class="row">
+		<div class="form-group col-6">
+			<label class="form-control-label">Subcategory</label>
+			{input subcategory}
+		</div>
+
+		<div class="form-group col-6">
+			<label class="form-control-label">Position within subcategory.</label>
+			{input position}
+			<span class="small text-blue">1 = first</span>
+		</div>
+	</div>
+	<div class="row">
+		<div class="form-group col-6">
+			<label class="form-control-label">City</label>
+			{input city}
+		</div>
+		<div class="form-group col-6">
+			<label class="form-control-label">University</label>
+			{input university}
+		</div>
+	</div>
+
+
+
+	<!-- Preview Image --------------------------------------------------------------- -->
+	<h4 class="border-bottom-1-gray">Images</h4>
+	<div class="form-group mt-4">
+		<h5>Icon / logo image</h5>
+		<div class="row">
+			<div class="col">
+				<label class="form-control-label"><strong>Square</strong> image shown in point card in lists. </label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<label class="form-control-label">URL address of image. Either pointing to image uploaded to esn cz website, or link to image on the internet</label>
+				<input n:name="preview_image_url" class="form-control" value="{($point != null) ? $point->getPreviewImage()}">
+			</div>
+
+			<div class="col-6 text-center">
+				{if $point != null}
+					<img src="{$point->getPreviewImage()}" style="width: 100px; height: 100px;">
+				{/if}
+			</div>
+		</div>
+		<div class="row mt-4 mb-4">
+			<div class="col-6">
+				<label class="form-control-label">Upload file. Optimal resolution 200x200 px.</label>
+			</div>
+			<div class="col-6">
+				{input preview_image_file}
+
+			</div>
+		</div>
+		<!-- Cover image(s) --------------------------------------------------------------- -->
+		<h5>Cover image</h5>
+		<div class="row">
+			<div class="col">
+				<label class="form-control-label">Cover image. Wide image at the top of detail of point. </label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				{dump $point}
+				<label class="form-control-label">URL address of image. Either pointing to image uploaded to esn cz website, or link to image on the internet</label>
+				<input n:name="cover_image_url" class="form-control" value="{if $point != null}{$point->getImages()->count() > 0 ? $point->getImages()->first()->getImageUrl() : ''}{/if}">
+			</div>
+
+			<div class="col-6 text-center">
+				{if $point != null}<img src="{$point->getImages()->count() > 0 ? $point->getImages()->first()->getImageUrl() : ''}" style="width: 300px; border: 1px solid lightgray;">{/if}
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-6">
+				<label class="form-control-label">Upload file. Optimal resolution <b>800x400</b> px.</label>
+			</div>
+			<div class="col-6">
+				{input cover_image_file}
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- CONTENT --------------------------------------------------------------- -->
+	<h4 class="border-bottom-1-gray">Content</h4>
+	<div class="form-group">
+		<label class="form-control-label">Content block title</label>
+		{input content_title}
+		<small><em>Short descriptive title of following content block</em></small>
+	</div>
+	<div class="form-group">
+		<label class="form-control-label">Content block body</label>
+		<div class="alert-danger p-2 mn-1">If you are <strong>copy/pasting</strong> from web, paste it as plain text (CTRL+<strong>SHIFT</strong>+V).<br>App can not work with web formatting. Format text you instead.</div>
+		{input content_block}
+		<span class="small alert-info p-1">For now, short description of this Point. If simple text editor is not working, you can use basic HTML to format text.
+			<br>HTML tags to format text: <span style="font-family: monospace">&lt;b&gt;</span> or <span style="font-family: monospace">&lt;strong&gt;</span> for <b>bold</b>, <span style="font-family: monospace">&lt;i&gt;</span> or <span style="font-family: monospace">&lt;em&gt;</span> for <i>italic</i> and <span style="font-family: monospace">&lt;br&gt;</span> for new line</span>.
+		{*You can use simple formatting html tags as &lt;i&gt;,&lt;b&gt;.*}
+	</div>
+	<div class="form-group">
+		<label class="form-control-label">Website link</label>
+		{input web_link}
+	</div>
+
+	<!-- Position, visibility --------------------------------------------------------------- -->
+	<!-- Discount --------------------------------------------------------------- -->
+	<h4 class="border-bottom-1-gray">Other</h4>
+	<div class="form-group">
+		<label class="form-control-label">Discount in % (e.g. with ESNcard) Format: 12.50</label>
+		{input discount}
+	</div>
+	<div class="form-group">
+		<label class="form-control-label">Visibility - determines if point will be shown in app. New points are by default hidden, to allow polishing edits before publication.</label>
+		{input visible}
+	</div>
+	<!-- Save --------------------------------------------------------------- -->
+	<div class="form-group">
+		{input save}
+	</div>
+{/form}
+<!-- Google maps api -->
+<script type="application/javascript">
+	// nahrat do vlastneho suboru, a vratit loading css/js do povodnej podoby
+    $(document).ready(function() {
+        $('#contentbody').summernote({
+            height: 200,
+	        disableDragAndDrop: true,
+	        toolbar: [
+                ['style', ['bold', 'italic', 'clear']],
+		        ['misc', ['undo','redo','codeview']]
+	        ],
+        });
+    });
+	var geocoder;
+    function initGeocoder(){
+        geocoder = new google.maps.Geocoder();
+        $('#geoBtn').on('click', function(){
+            var address = $('#address').val();
+            geocoder.geocode({'address':address},function(results, status){
+                if (status === 'OK'){
+					$('#lat').val(results[0].geometry.location.lat);
+					$('#lon').val(results[0].geometry.location.lng);
+                }else{
+                    alert('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        });
+    }
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbZzKspNAnS46xsES9EZdqEpD9d7IHB9o&callback=initGeocoder"></script>

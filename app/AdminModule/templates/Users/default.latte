@@ -1,0 +1,46 @@
+{block content}
+<!-- content -->
+<section class="table">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<h3>List of users</h3>
+						<a class="btn btn-secondary float-right" n:href="Users:add"><li class="fa fa-plus-circle"></li>&nbsp;Add</a>
+					</div>
+					<div class="card-body">
+						<table class="table table-striped table-hover">
+							<thead>
+							<tr>
+								<th>Id</th>
+								<th>Login</th>
+								<th>Name</th>
+								<th>Role</th>
+								<th>University</th>
+								<th>Action</th>
+							</tr>
+							</thead>
+							<tbody>
+							{foreach $userEntities as $u}
+								<tr>
+									<td>{$u->getId()}</td>
+									<td>{$u->getLogin()}</td>
+									<td>{$u->getName()}</td>
+									<td>{$u->getRole()}</td>
+									<td>{$u->getUniversity() ? $u->getUniversity()->getName()}</td>
+									<td><span style="font-size: larger;">
+                                            <a n:href="Users:edit $u->getId()" title="Edit subcategory"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;
+                                            <a n:href="Users:delete $u->getId()" class="text-red" title="(!) DELETE subcategory"><i class="fa fa-trash"></i></a>
+                                        </span>
+									</td>
+								</tr>
+							{/foreach}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

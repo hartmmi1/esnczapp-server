@@ -1,0 +1,81 @@
+{block content}
+<!-- content -->
+<section class="cities-table">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="float-left"><h3 class="pb-1">List of points</h3>
+
+                            <div class="container float-left">
+                                <div class="row pb-2">
+                                    <div class="col-1">All</div>
+                                    <div class="col-11"><a n:href="Pois:default" class="btn btn-{$active_subcat == 0 ? 'primary' : 'secondary'}">All</a></div>
+                                </div>
+								{foreach $categories as $cat}
+                                    <div class="row pb-1">
+                                        <div class="col-1">{$cat->getName()}</div>
+                                        <div class="col-11">
+											{foreach $cat->getSubcategories() as $subcat}
+                                                <a n:href="Pois:default $subcat->getId()" class="btn btn-outline-{$active_subcat == $subcat->getId() ? 'primary' : 'secondary'}">{$subcat->getName()}</a>
+											{/foreach}
+                                        </div>
+                                    </div>
+								{/foreach}
+                            </div>
+
+                            {if $user->isInRole(2)}
+                            <div class="clearfix border-bottom-1-gray pb-2"></div>
+                            <div class="container float-left mt-2">
+                                <div class="row pb-1">
+                                    <div class="col-1">Filter by</div>
+                                    <div class="col-11">{control formFilterPoints}</div>
+                                </div>
+                            </div>
+                            {/if}
+                        </div>
+                        <a n:href="Pois:add" class="btn btn-outline-success float-right"><i class="fa fa-plus-circle"></i>&nbsp;Add</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Preview image</th>
+                                <th>Subcategory</th>
+                                <th>City</th>
+                                <th>University</th>
+                                <th>Discount</th>
+                                <th>Order</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {foreach $points as $poi}
+                                <tr>
+                                    <td>{$poi->getId()}</td>
+                                    <td>{$poi->getName()}</td>
+                                    <td><img src="{$poi->getPreviewImage()}" style="height: 50px; width: 50px;"></td>
+                                    <td>{$poi->getSubcategory()->getName()}</td>
+                                    <td>{$poi->getCity()->getName()}</td>
+                                    <td>{$poi->getUniversity()->getName()}</td>
+                                    <td>{$poi->getDiscount()}</td>
+                                    <td>{$poi->getOrder()}</td>
+                                    <td>
+                                        <span style="font-size: larger;">
+                                            <a n:href="Pois:detail $poi->getid()" title="Show detail"><i class="fa fa-search-plus"></i></a>&nbsp;&nbsp;<a n:href="Pois:edit $poi->getId()" title="Edit point"><i class="fa fa-pencil"></i></a><br>
+											<a n:href="Pois:hide $poi->getId(), $poi->getReversedVisibility()" title="{$poi->isVisible() ? 'Hide point' : 'Show point'}" class="{$poi->isVisible() ? 'text-green' : 'text-orange'}">{$poi->isVisible() ? '<i class="fa fa-eye">' : '<i class="fa fa-eye-slash">'|noescape}</i></a>&nbsp;&nbsp;<a n:href="Pois:delete $poi->getId()" title="(!) Delete POI" class="text-red"><i class="fa fa-trash"></i></a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            {/foreach}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,22 @@
+/* your styles go here */
+
+a.light:link{
+	color: skyblue;
+}
+a.light:visited{
+	color: skyblue;
+}
+a.light:hover{
+	color: #8fcafe;
+}
+
+.bg-dark-blue{
+	background-color: #0b3b72;
+}
+.bg-esn-blue{
+	background-color: #353895;
+}
+
+.border-bottom-1-gray{
+	border-bottom: 1px solid gray;
+}

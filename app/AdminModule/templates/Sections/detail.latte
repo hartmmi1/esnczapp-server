@@ -1,0 +1,22 @@
+{block content}
+<!-- content -->
+<section>
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header">
+				<h3>Detail of {$section->getName()}</h3>
+			</div>
+			<div class="card-body">
+				<p>This screen is mainly placeholder. More details and options will be here in future updates.</p>
+				<div class="form-group">
+					<label class="form-control-label">Name</label>
+					<input class="form-control" type="text" value="{$section->getName()}" disabled>
+				</div>
+				<div class="form-group">
+					<label class="form-control-label">City</label>
+					<input class="form-control" type="text" value="{$section->getParentCity()->getName()}" disabled>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -1,0 +1,22 @@
+{block content}
+<!-- content -->
+<section class="cities-delete">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col">
+				{*{control deleteItemControl $uni} problem s volanim create *}
+				<div class="card">
+					<div class="card-header">
+						<h3 class="float-left">Delete {$item->getName()} ({$item->getId()})</h3>
+					</div>
+					<div class="card-body">
+						<p>Are you sure you want to delete <strong>{$item->getName()}</strong>?</p>
+						<a n:href=":{$presenter->getName()}:default" class="btn btn-secondary">No</a>
+						{var $confirmation = 'yes'}
+						<a n:href=":{$presenter->getName()}:delete $item->getId(), $confirmation" class="btn btn-danger">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

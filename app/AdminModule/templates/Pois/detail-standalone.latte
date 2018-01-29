@@ -1,0 +1,111 @@
+	<div class="card">
+		<div class="card-header">
+			<h4>Point detail</h4>
+
+		</div>
+		<div class="card-body">
+			<h5>{$point->getCity()->getName()} -> {$point->getUniversity()->getName()}</h5>
+			<div style="width: 350px; box-shadow: 2px 2px 8px gray; padding: 20px;">
+				<div class="row bg-dark-blue text-white p-1">
+				{* Nav, name *}
+					<div class="col-2">
+						<i class="fa fa-arrow-left"></i>
+					</div>
+					<div class="col-10 text-white text-center small">
+						{$point->getName()}
+					</div>
+				</div>
+				<div class="row">
+				{* images *}
+					{* docasne zobrazuje len prvy (a jediny obrazok)*}
+					{if $point->getImages()->count() > 0}
+						<img src="{$point->getImages()->first()->getImageUrl()}" style="width: 350px; height: 175px;">
+					{else}
+						<img src="{$base_path}data/points/default_slider.png" style="width: 350px; height: 175px;">
+					{/if}
+				</div>
+				<div class="row bg-esn-blue text-white text-left small p-1">
+				{* address *}
+					<div class="col-9">
+						{$point->getFullAddress()}
+					</div>
+					<div class="col-3 text-center">
+						Navigate
+					</div>
+				</div>
+				<div class="row p-1" style="border-bottom: 1px solid gray;">
+				{* preview, name *}
+					<div class="col-3">
+						{if empty($point->getPreviewImage())}
+							<img src="{$point->getPreviewImage()}" style="width: 60px; height: 60px;">
+						{else}
+							<img src="{$point->getSubcategory()->getIconUrl()}"  style="width: 60px; height: 60px;">
+						{/if}
+					</div>
+					<div class="col-9">
+						<strong>{$point->getName()}</strong>
+					</div>
+				</div>
+				<div class="row" style="margin-bottom: 1em;">
+				{* content *}
+					<div class="col">
+						{if $point->getContent()->count() > 0}
+						{foreach $point->getContent() as $contentBlock}
+						<div class="row" style="margin-top: 1em;">
+							<div class="col">
+								<div class="h5">{$contentBlock->getContentTitle()}</div>
+								<div class="small">{$contentBlock->getContentBlock()|noescape}</div>
+							</div>
+						</div>
+						{/foreach}
+						{/if}
+					</div>
+
+				</div>
+				<div class="row">
+				{* open website *}
+					<div class="col text-center">
+						<a href="{$point->getWebsiteLink()}" target="_blank" class="btn btn-primary text-uppercase">Open website</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="card">
+		<div class="card-header">
+			<h4>Detail of list card</h4>
+		</div>
+		<div class="card-body">
+			<h5>{$point->getSubcategory()->getParentCategory()->getName()} -> {$point->getSubcategory()->getName()}</h5>
+			<div style="box-shadow: 2px 2px 8px gray; padding: 20px; padding-bottom: 3px; width:350px;">
+				<div style="width: auto;">
+					<div class="row">
+						<div class="col-4 p-3">
+							{if empty($point->getPreviewImage())}
+								<img src="{$point->getPreviewImage()}" style="width: 80px; height: 80px;">
+							{else}
+								<img src="{$point->getSubcategory()->getIconUrl()}"  style="width: 80px; height: 80px;">
+							{/if}
+						</div>
+						<div class="col-8">
+							{if $point->getDiscount() > 0}
+								<span class="float-right p-1 text-white" style="background-color: darkorange">-{$point->getDiscount()}%</span>
+							{/if}
+							<h4 style="margin-top: 1.5em;">{$point->getName()}</h4>
+						</div>
+					</div>
+					<div class="row" style="border-top: 1px solid gray;">
+						<div class="col-6 text-center" style="border-right: 1px solid gray";>
+							<i class="fa fa-map-marker"></i> 250m
+						</div>
+						<div class="col-6 text-center">
+							Navigate
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>

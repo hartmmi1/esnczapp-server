@@ -1,0 +1,40 @@
+{block content}
+<div class="row">
+	<!-- Logo & Information Panel-->
+	<div class="col-lg-6">
+		<div class="info d-flex align-items-center">
+			<div class="content">
+				<div class="logo">
+					<h1>ESN CZ app</h1>
+					<h2>administration</h2>
+				</div>
+				<p>Administrative interface for <i>Erasmus in Czech Republic</i> app.</p><br><br>
+				<p><strong>If you are looking for an actual app, you can download it from <a class="light" href="https://play.google.com/store/apps/details?id=com.nanooq.esn">Google Play</a>, or use QR code bellow.</strong></p>
+				<div style="text-align: center">
+					<img src="./img/qr_android.jpg" style="margin: 0px auto; width: 250px; height: 250px;">
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Form Panel    -->
+	<div class="col-lg-6 bg-white">
+		<div class="form d-flex align-items-center">
+			<div class="content">
+				{$hash}
+				<form n:name="signInForm" method="post">
+					<div class="form-group">
+						<input n:name="user_name" id="login-username" type="text"  required="true" class="input-material">
+						<label for="login-username" class="label-material">User Name</label>
+					</div>
+					<div class="form-group">
+						<input n:name="psswd" id="login-password" type="password" required="true" class="input-material">
+						<label for="login-password" class="label-material">Password</label>
+					</div>
+					<button n:name="signIn" class="btn btn-primary">Sign In</button>
+					{*<a id="galaxy-login" href="accounts.esn.org" class="btn btn-secondary" style="float: right;">Login with galaxy</a>*}
+					<!-- This should be submit button but I replaced it with <a> for demo purposes-->
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
