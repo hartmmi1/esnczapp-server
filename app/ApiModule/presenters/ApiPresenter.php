@@ -18,7 +18,6 @@ use Nette;
 use Symfony\Component\Console\Output\Output;
 use Tracy\Debugger;
 use Tracy\OutputDebugger;
-use Kdyby\Monolog\Logger;
 
 
 class ApiPresenter extends BasePresenter{
@@ -34,13 +33,13 @@ class ApiPresenter extends BasePresenter{
 
 	public function startup(){
 		parent::startup();
+
 		$this->logId = mt_rand(1,9999);
 		$this->logger->addDebug('[API] [request] ['.$this->logId.']',[
 			'url' => $this->getHttpRequest()->getUrl()->getPath(),
 			'query' => $this->getHttpRequest()->getUrl()->getQuery(),
 			'parameters' => $this->getRequest()->getParameters()
 		]);
-		//file_put_contents('/log/test.log','test', FILE_APPEND);
 	}
 
 	/**
@@ -130,9 +129,9 @@ class ApiPresenter extends BasePresenter{
 		if(isset($params['category'])){
 			$category_id = (int)$params['category'];
 			if(isset($params['universities'])){
+				// remove brackets from iOS query
 				$params['universities'] = str_replace('[','',$params['universities']);
 				$params['universities'] = str_replace(']','',$params['universities']);
-				$this->logger->addDebug('Parsed uni array', [1 => $params['universities']]);
 				$uniArr = explode(',',$params['universities']);
 			}else{
 				$uniArr = null;
