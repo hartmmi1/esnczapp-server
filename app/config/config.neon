@@ -1,6 +1,5 @@
 parameters:
 
-
 application:
 	errorPresenter: Error
 	mapping:
@@ -11,33 +10,6 @@ application:
 
 session:
 	expiration: 14 days
-
-#security:
-#	users:
-#		superadmin: thisisesn
-#		admin_vut: vut
-#		admin_mendelu: mendelu
-#		admin_muni: muni
-#		admin_upol: upol
-#		admin_utb: utb
-#		admin_vsb: vsb
-#		admin_ou: ostravska
-#		admin_uhk: uhk
-#		admin_upce: upce
-#		admin_tul: tul
-#		admin_ujep: ujep
-#		admin_vste: vste
-#		admin_zcu: zcu
-#		admin_ctu: ctu
-#		admin_culs: culs
-#		admin_vse: vse
-#		admin_vscht: vscht
-#		admin_cuni: cuni
-#
-#	roles:
-#		sectionadmin:
-#		superadmin:
-
 
 services:
 	router: App\RouterFactory::createRouter
@@ -68,6 +40,11 @@ extensions:
 	events: Kdyby\Events\DI\EventsExtension
 	annotations: Kdyby\Annotations\DI\AnnotationsExtension
 	doctrine: Kdyby\Doctrine\DI\OrmExtension
+	monolog: Kdyby\Monolog\DI\MonologExtension
+
+monolog:
+	name: app-server
+	registerFallback: yes
 
 images:
 	local:

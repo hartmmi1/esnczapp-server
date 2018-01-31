@@ -14,9 +14,13 @@ use Kdyby\Doctrine\EntityManager;
 use Nette;
 use Tracy\Debugger;
 use WebChemistry\Images\TPresenter;
+use Kdyby\Monolog\Logger;
 
 class BasePresenter extends Nette\Application\UI\Presenter{
 	use \WebChemistry\Images\TPresenter;
+
+	/** @var Logger @inject */
+	public $logger;
 
 	/**
 	 * @var EntityManager @inject
