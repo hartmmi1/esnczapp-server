@@ -44,6 +44,10 @@ extensions:
 
 monolog:
 	name: app-server
+	# on local dev comment papertrail handlers
+	# on production enter valid papertrail app port!
+	#handlers:
+	#	- Monolog\Handler\SyslogUdpHandler("logs.papertrailapp.com", xxxx)
 	registerFallback: yes
 
 images:

@@ -12,7 +12,6 @@ use App\Presenters\BasePresenter;
 use Nette;
 use Nette\Application\UI\Form;
 
-
 class LandingPresenter extends BasePresenter{
 
 	public function startup(){
@@ -24,7 +23,6 @@ class LandingPresenter extends BasePresenter{
 			$this->redirect(':Admin:Dashboard:');
 		}
 		parent::beforeRender();
-		$this->template->hash = Nette\Security\Passwords::hash('fubu8891');
 	}
 
 
@@ -51,10 +49,11 @@ class LandingPresenter extends BasePresenter{
 	public function signInFormSucceeded($form, $values){
 		try{
 			$this->getUser()->login($values->user_name,$values->psswd);
+			$this->logger->addInfo('[USER] Signed in (login)', ['user name' => $values->user_name]);
 			$this->redirect(':Admin:Dashboard:');
 		}catch(Nette\Security\AuthenticationException $e){
-			//$this->flashMessage('Nesprávné přihlašovací jméno nebo heslo.','error');
-			die($e->getMessage());
+			$this->flashMessage('Nesprávné přihlašovací jméno nebo heslo.','danger');
+			$this->logger->addInfo('[USER] Sign in failed (login)', ['user name' => $values->user_name]);
 		}
 	}
 
