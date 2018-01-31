@@ -130,7 +130,9 @@ class ApiPresenter extends BasePresenter{
 		if(isset($params['category'])){
 			$category_id = (int)$params['category'];
 			if(isset($params['universities'])){
-
+				$params['universities'] = str_replace('[','',$params['universities']);
+				$params['universities'] = str_replace(']','',$params['universities']);
+				$this->logger->addDebug('Parsed uni array', [1 => $params['universities']]);
 				$uniArr = explode(',',$params['universities']);
 			}else{
 				$uniArr = null;
