@@ -69,14 +69,6 @@ extensions:
 	annotations: Kdyby\Annotations\DI\AnnotationsExtension
 	doctrine: Kdyby\Doctrine\DI\OrmExtension
 
-doctrine:
-	user: esncz_app
-	password: ODm4xZFmJH
-	dbname: esncz_app
-	host: localhost
-	metadata:
-		App: %appDir%
-
 images:
 	local:
 		enable: yes
