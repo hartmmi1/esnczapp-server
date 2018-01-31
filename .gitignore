@@ -2,3 +2,4 @@ app/config/config.local.neon
 vendor/
 www/data/
 .idea/
+app/config/config.server.neon

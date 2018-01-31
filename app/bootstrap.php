@@ -17,6 +17,9 @@ $configurator->createRobotLoader()
 $configurator->addConfig(__DIR__ . '/config/config.neon');
 $configurator->addConfig(__DIR__ . '/config/config.local.neon');
 
+// TODO Before deploymnet uncomment this line (and comment local above)
+//$configurator->addConfig(__DIR__ . '/config/config.server.neon');
+
 $container = $configurator->createContainer();
 
 return $container;
